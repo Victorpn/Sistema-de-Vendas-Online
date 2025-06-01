@@ -94,13 +94,167 @@ $anuncios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <title>Meus Anúncios</title>
     <style>
-        body { font-family: Arial; margin: 40px; background-color: #f7f7f7; }
-        form { background: #fff; padding: 15px; border: 1px solid #ccc; border-radius: 8px; max-width: 500px; margin-bottom: 30px; }
-        input, button, label { display: block; width: 100%; margin: 10px 0; padding: 8px; }
-        .anuncio { background: #fff; padding: 15px; border: 1px solid #ccc; border-radius: 8px; margin-bottom: 20px; }
-        img { width: 150px; margin: 5px; border-radius: 6px; border: 1px solid #ccc; }
-        a { text-decoration: none; color: #007BFF; margin-right: 10px; }
-        a:hover { text-decoration: underline; }
+        body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 40px auto;
+    max-width: 900px;
+    background-color: #f4f6f8;
+    color: #333;
+}
+
+h2, h3 {
+    color: #222;
+    border-bottom: 3px solid #007BFF;
+    padding-bottom: 6px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+p {
+    font-size: 0.95rem;
+    text-align: right;
+}
+
+a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    margin-right: 12px;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 40px;
+}
+
+form label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="file"] {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 6px;
+    border: 1.6px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+}
+
+form button {
+    margin-top: 18px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    padding: 12px;
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+.anuncio {
+    background: #ffffff;
+    padding: 18px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+.anuncio strong {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.anuncio img {
+    width: 140px;
+    margin: 8px 10px 5px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    object-fit: cover;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.anuncio .status {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.anuncio .status span {
+    font-size: 0.95rem;
+}
+
+.anuncio .status span.aprovado {
+    color: green;
+}
+
+.anuncio .status span.rejeitado {
+    color: red;
+}
+
+.anuncio .status em {
+    color: #888;
+}
+
+.anuncio a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 14px;
+    background-color: #e9ecef;
+    color: #007BFF;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.anuncio a:hover {
+    background-color: #d4e2f0;
+}
+
+@media (max-width: 600px) {
+    body {
+        margin: 20px;
+    }
+
+    .anuncio img {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    form button {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+
     </style>
 </head>
 <body>

@@ -16,6 +16,8 @@ $anunciosAprovados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -24,60 +26,110 @@ $anunciosAprovados = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <title>Página Principal</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      padding: 20px;
-    }
+    /* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .cabecalho {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #007BFF;
-      padding: 20px;
-      color: white;
-    }
+/* Corpo da página */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  padding: 20px;
+  color: #000;
+}
 
-    .botoes a {
-      margin-left: 15px;
-      background-color: white;
-      color: #007BFF;
-      padding: 8px 12px;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+/* Cabeçalho */
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #b30000; /* vermelho escuro */
+  padding: 20px;
+  color: white;
+  border-radius: 8px;
+}
 
-    .anuncios-container {
-      margin-top: 30px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+.logo {
+  display: flex;
+  align-items: end  ;
+  font-size: 1.5em;
+  font-weight: bold;
+}
 
-    .anuncio {
-      background-color: white;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    }
+/* Navegação */
+.botoes a {
+  margin-left: 15px;
+  background-color: white;
+  color: #b30000;
+  padding: 8px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid #b30000;
+  transition: all 0.3s;
+}
 
-    .anuncio img {
-      max-width: 100%;
-      height: 150px;
-      object-fit: cover;
-      margin-bottom: 10px;
-      border-radius: 5px;
-    }
+.botoes a:hover {
+  background-color: #b30000;
+  color: white;
+}
 
-    .anuncio h3 {
-      margin: 0 0 5px;
-    }
+/* Título */
+h2 {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+  text-align: center;
+  color: #b30000;
+}
 
-    .anuncio p {
-      margin: 5px 0;
-    }
+/* Container de anúncios com máximo de 5 por linha */
+.anuncios-container {
+  display: flex;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+/* Cartão do anúncio */
+.anuncio {
+  background-color: #000;
+  color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.anuncio:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Imagem do anúncio */
+.anuncio img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 2px solid #b30000;
+}
+
+/* Título do carro */
+.anuncio h3 {
+  margin: 0 0 8px;
+  color: #ff4d4d;
+}
+
+/* Informações adicionais */
+.anuncio p {
+  margin: 4px 0;
+  font-size: 0.95em;
+}
+
   </style>
 </head>
 <body>
@@ -88,13 +140,15 @@ $anunciosAprovados = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <a href="cadastrar.php">Cadastrar</a>
     </nav>
   </header>
-
-  <h2>Anúncios de Carros Aprovados</h2>
+  <div>
+    <h2>Anúncios de Carros</h2> 
+  </div>
+  
   <div class="anuncios-container">
     <?php foreach ($anunciosAprovados as $anuncio): ?>
       <div class="anuncio">
         
-        <img src="<?= htmlspecialchars($anuncio['foto']) ?>" alt="Foto do carro">
+        <img src="<?= htmlspecialchars($anuncio['foto']) ?>" >
 
         <?php if (!empty($anuncio['foto']) && file_exists($anuncio['foto'])): ?>
           <img src="uploads/  <?= htmlspecialchars($anuncio['foto']) ?>" alt="Foto do carro">

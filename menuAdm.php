@@ -51,12 +51,147 @@ $exclusoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <title>Área do Administrador</title>
     <style>
-        body { font-family: Arial; margin: 40px; background-color: #f7f7f7; }
-        h2 { color: #333; }
-        .anuncio { background: #fff; padding: 15px; border: 1px solid #ccc; border-radius: 8px; margin-bottom: 20px; }
-        .info { margin-bottom: 10px; }
-        a { color: #007BFF; text-decoration: none; margin-right: 10px; }
-        a:hover { text-decoration: underline; }
+        /* Reset básico */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 40px;
+            background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+            color: #333;
+        }
+
+        /* Header e informações do usuário */
+        p[style*="text-align: right"] {
+            font-size: 14px;
+            color: #555;
+        }
+
+        p[style*="text-align: right"] strong {
+            color: #222;
+        }
+
+        a {
+            color: #1d4ed8; /* Azul */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #2563eb;
+            text-decoration: underline;
+        }
+
+        /* Botão Gerenciar Usuários */
+        p > a {
+            display: inline-block;
+            padding: 10px 18px;
+            background-color: #2563eb;
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.4);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        p > a:hover {
+            background-color: #1e40af;
+            box-shadow: 0 6px 12px rgba(30, 64, 175, 0.6);
+        }
+
+        h2 {
+            color: #1e3a8a;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 8px;
+        }
+
+        /* Cards dos anúncios */
+        .anuncio {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .anuncio:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .info {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        /* Links dentro dos anúncios como botões */
+        .anuncio a {
+            display: inline-block;
+            margin-right: 12px;
+            margin-top: 10px;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .anuncio a[href*="aprovar"] {
+            background-color: #22c55e; /* Verde */
+            color: white;
+        }
+        .anuncio a[href*="aprovar"]:hover {
+            background-color: #16a34a;
+        }
+
+        .anuncio a[href*="rejeitar"] {
+            background-color: #ef4444; /* Vermelho */
+            color: white;
+        }
+        .anuncio a[href*="rejeitar"]:hover {
+            background-color: #b91c1c;
+        }
+
+        .anuncio a[href*="excluir"] {
+            background-color: #f97316; /* Laranja */
+            color: white;
+        }
+        .anuncio a[href*="excluir"]:hover {
+            background-color: #c2410c;
+        }
+
+        /* Mensagem sem anúncios */
+        p {
+            font-style: italic;
+            color: #555;
+            font-size: 16px;
+        }
+
+        /* Responsividade simples */
+        @media (max-width: 600px) {
+            body {
+                margin: 20px;
+            }
+            .anuncio {
+                padding: 15px 20px;
+            }
+            .anuncio a {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+            p > a {
+                padding: 8px 14px;
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -67,7 +202,7 @@ $exclusoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </p>
 
 <p>
-  <a href="gerenciarUsuarios.php" style="padding: 8px 12px; background: #007BFF; color: white; border-radius: 5px; text-decoration: none;">
+  <a href="gerenciarUsuarios.php">
     Gerenciar Usuários
   </a>
 </p>
