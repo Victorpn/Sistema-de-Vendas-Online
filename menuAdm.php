@@ -51,148 +51,145 @@ $exclusoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <title>Área do Administrador</title>
     <style>
-        /* Reset básico */
-        * {
-            box-sizing: border-box;
-        }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 40px;
-            background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
-            color: #333;
-        }
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    padding: 30px;
+    color: #000;
+  }
 
-        /* Header e informações do usuário */
-        p[style*="text-align: right"] {
-            font-size: 14px;
-            color: #555;
-        }
+  /* Cabeçalho */
+  p[style*="text-align: right"] {
+    font-size: 14px;
+    text-align: right;
+    margin-bottom: 20px;
+  }
 
-        p[style*="text-align: right"] strong {
-            color: #222;
-        }
+  p[style*="text-align: right"] strong {
+    color: #b30000;
+  }
 
-        a {
-            color: #1d4ed8; /* Azul */
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+  p[style*="text-align: right"] a {
+    color:rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: bold;
+  }
 
-        a:hover {
-            color: #2563eb;
-            text-decoration: underline;
-        }
+  p[style*="text-align: right"] a:hover {
+    text-decoration: underline;
+  }
 
-        /* Botão Gerenciar Usuários */
-        p > a {
-            display: inline-block;
-            padding: 10px 18px;
-            background-color: #2563eb;
-            color: white;
-            border-radius: 8px;
-            font-weight: 600;
-            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.4);
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
+  /* Botão Gerenciar Usuários */
+  p > a {
+    background-color: #b30000;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+    margin-bottom: 30px;
+  }
 
-        p > a:hover {
-            background-color: #1e40af;
-            box-shadow: 0 6px 12px rgba(30, 64, 175, 0.6);
-        }
+  p > a:hover {
+    background-color: #800000;
+  }
 
-        h2 {
-            color: #1e3a8a;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            font-weight: 700;
-            border-bottom: 3px solid #3b82f6;
-            padding-bottom: 8px;
-        }
+  h2 {
+    color: #b30000;
+    margin-bottom: 15px;
+    font-size: 1.6em;
+    border-bottom: 2px solid #b30000;
+    padding-bottom: 6px;
+  }
 
-        /* Cards dos anúncios */
-        .anuncio {
-            background: white;
-            padding: 20px 25px;
-            border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
+  .anuncio {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
 
-        .anuncio:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-        }
+  .anuncio:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
 
-        .info {
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
+  .info {
+    margin-bottom: 8px;
+    font-size: 15px;
+  }
 
-        /* Links dentro dos anúncios como botões */
-        .anuncio a {
-            display: inline-block;
-            margin-right: 12px;
-            margin-top: 10px;
-            padding: 8px 14px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            user-select: none;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-        }
+  /* Botões de ação */
+  .anuncio a {
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 8px 14px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s;
+  }
 
-        .anuncio a[href*="aprovar"] {
-            background-color: #22c55e; /* Verde */
-            color: white;
-        }
-        .anuncio a[href*="aprovar"]:hover {
-            background-color: #16a34a;
-        }
+  .anuncio a[href*="aprovar"] {
+    background-color: #28a745;
+  }
 
-        .anuncio a[href*="rejeitar"] {
-            background-color: #ef4444; /* Vermelho */
-            color: white;
-        }
-        .anuncio a[href*="rejeitar"]:hover {
-            background-color: #b91c1c;
-        }
+  .anuncio a[href*="aprovar"]:hover {
+    background-color: #1e7e34;
+  }
 
-        .anuncio a[href*="excluir"] {
-            background-color: #f97316; /* Laranja */
-            color: white;
-        }
-        .anuncio a[href*="excluir"]:hover {
-            background-color: #c2410c;
-        }
+  .anuncio a[href*="rejeitar"] {
+    background-color: #dc3545;
+  }
 
-        /* Mensagem sem anúncios */
-        p {
-            font-style: italic;
-            color: #555;
-            font-size: 16px;
-        }
+  .anuncio a[href*="rejeitar"]:hover {
+    background-color: #a71d2a;
+  }
 
-        /* Responsividade simples */
-        @media (max-width: 600px) {
-            body {
-                margin: 20px;
-            }
-            .anuncio {
-                padding: 15px 20px;
-            }
-            .anuncio a {
-                padding: 6px 10px;
-                font-size: 14px;
-            }
-            p > a {
-                padding: 8px 14px;
-                font-size: 14px;
-            }
-        }
-    </style>
+  .anuncio a[href*="excluir"] {
+    background-color: #fd7e14;
+  }
+
+  .anuncio a[href*="excluir"]:hover {
+    background-color: #e8590c;
+  }
+
+  /* Mensagens informativas */
+  p {
+    font-size: 15px;
+    color: #333;
+  }
+
+  /* Responsividade */
+  @media (max-width: 600px) {
+    body {
+      padding: 15px;
+    }
+
+    .anuncio {
+      padding: 15px;
+    }
+
+    .anuncio a {
+      font-size: 14px;
+      padding: 6px 10px;
+    }
+  }
+</style>
 </head>
 <body>
 

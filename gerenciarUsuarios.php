@@ -52,7 +52,11 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <meta charset="UTF-8">
 <title>Gerenciar Usuários - Admin</title>
 <style>
-    body {
+* {
+    box-sizing: border-box;
+}
+
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 40px auto;
     max-width: 900px;
@@ -63,7 +67,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 h2 {
     color: #222;
-    border-bottom: 3px solid #007BFF;
+    border-bottom: 3px solid rgb(255, 0, 0);
     padding-bottom: 8px;
     margin-bottom: 25px;
     font-weight: 700;
@@ -74,20 +78,21 @@ p {
 }
 
 a {
-    color: #007BFF;
+    color:rgb(255, 0, 0);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 a:hover {
     text-decoration: underline;
-    color: #0056b3;
+    color:rgb(255, 0, 0);
 }
 
 form {
     margin-bottom: 25px;
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 form input[type="text"] {
@@ -100,13 +105,13 @@ form input[type="text"] {
 }
 
 form input[type="text"]:focus {
-    border-color: #007BFF;
+    border-color:rgb(255, 0, 0);
     outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    box-shadow: 0 0 5px rgba(161, 0, 0, 0.5);
 }
 
 form button[type="submit"] {
-    background-color: #007BFF;
+    background-color:rgb(255, 0, 0);
     border: none;
     color: white;
     font-weight: 600;
@@ -117,7 +122,7 @@ form button[type="submit"] {
 }
 
 form button[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color:rgb(134, 3, 3);
 }
 
 table {
@@ -137,7 +142,7 @@ th, td {
 }
 
 th {
-    background-color: #007BFF;
+    background-color:rgb(255, 0, 0);
     color: white;
     font-weight: 700;
 }
@@ -228,7 +233,6 @@ button:hover {
     td:nth-of-type(3):before { content: "Nível"; }
     td:nth-of-type(4):before { content: "Ações"; }
 }
-
 </style>
 <script>
 function confirmarUpgrade(userId, userName) {

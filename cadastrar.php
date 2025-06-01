@@ -54,39 +54,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <!DOCTYPE html>
-<html>
-
-<style>
-    body {
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cadastro de Usuário</title>
+    <style>
+            body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f0f2f5;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        background-color: #fff;
         height: 100vh;
         margin: 0;
+        color: #000;
+
+        display: flex;
+        justify-content: center; /* centraliza horizontalmente */
+        align-items: center;     /* centraliza verticalmente */
+    }
+
+    .container {
+        width: 100%;
+        max-width: 400px;
+        /* Aqui garante que o título fique em cima do form */
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .titulo {
+        color: #c40000;
+        text-align: center;
+        margin-bottom: 25px;
     }
 
     form {
         background-color: #fff;
         padding: 30px;
         border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        width: 100%;
-        max-width: 400px;
-    }
-
-    h2 {
-        text-align: center;
-        margin-bottom: 25px;
-        color: #333;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border: 1.5px solid #c40000;
     }
 
     label {
         font-weight: 600;
         margin-bottom: 6px;
         display: block;
-        color: #333;
+        color: #000;
     }
 
     input[type="text"],
@@ -95,22 +108,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         width: 100%;
         padding: 10px 12px;
         margin-bottom: 18px;
-        border: 1.5px solid #ccc;
+        border: 1.5px solid #333;
         border-radius: 6px;
         font-size: 1rem;
         transition: border-color 0.3s ease;
     }
 
     input:focus {
-        border-color: #007BFF;
+        border-color: #c40000;
         outline: none;
-        box-shadow: 0 0 5px rgba(0,123,255,0.25);
+        box-shadow: 0 0 5px rgba(196, 0, 0, 0.25);
     }
 
     input[type="submit"] {
         width: 100%;
         padding: 12px;
-        background-color: #007BFF;
+        background-color: #c40000;
         border: none;
         border-radius: 6px;
         color: #fff;
@@ -121,34 +134,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     input[type="submit"]:hover {
-        background-color: #0056b3;
+        background-color: #900000;
     }
-</style>
 
-
-<head>
-    <title>Cadastro de Usuário</title>
+    </style>
 </head>
 <body>
-    <h2>Cadastro de Novo Usuário</h2>
-    <form method="post">
-        <label>Nome completo:</label><br>
-        <input type="text" name="nome" required><br><br>
+    <div class="container">
+        <h2 class="titulo">Cadastro de Novo Usuário</h2>
+        <form method="post">
+            <label>Nome completo:</label>
+            <input type="text" name="nome" required>
 
-        <label>E-mail:</label><br>
-        <input type="email" name="email" required><br><br>
+            <label>E-mail:</label>
+            <input type="email" name="email" required>
 
-        <label>Nome de Usuário (login):</label><br>
-        <input type="text" name="login" required><br><br>
+            <label>Nome de Usuário (login):</label>
+            <input type="text" name="login" required>
 
-        <label>Senha:</label><br>
-        <input type="password" name="senha" required><br><br>
+            <label>Senha:</label>
+            <input type="password" name="senha" required>
 
-        <label>Confirmar senha:</label><br>
-        <input type="password" name="confirma_senha" required><br><br>
+            <label>Confirmar senha:</label>
+            <input type="password" name="confirma_senha" required>
 
-        <input type="submit" value="Cadastrar">
-    </form>
+            <input type="submit" value="Cadastrar">
+        </form>
+    </div>
 </body>
 </html>
 

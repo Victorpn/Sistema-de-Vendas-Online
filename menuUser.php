@@ -98,13 +98,13 @@ $anuncios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 40px auto;
     max-width: 900px;
-    background-color: #f4f6f8;
-    color: #333;
+    background-color: #fff; /* branco */
+    color: #111; /* preto suave */
 }
 
 h2, h3 {
-    color: #222;
-    border-bottom: 3px solid #007BFF;
+    color: #000; /* preto */
+    border-bottom: 3px solid #c40000; /* vermelho escuro */
     padding-bottom: 6px;
     margin-bottom: 20px;
     font-weight: 700;
@@ -116,7 +116,7 @@ p {
 }
 
 a {
-    color: #007BFF;
+    color: #c40000; /* vermelho */
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
@@ -124,12 +124,12 @@ a {
 }
 
 a:hover {
-    color: #0056b3;
+    color: #900000; /* vermelho mais escuro */
     text-decoration: underline;
 }
 
 form {
-    background: #fff;
+    background: #fff; /* branco */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -149,21 +149,21 @@ form input[type="file"] {
     width: 100%;
     padding: 10px 12px;
     margin-top: 6px;
-    border: 1.6px solid #ccc;
+    border: 1.6px solid #333; /* preto */
     border-radius: 6px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
 }
 
 form input:focus {
-    border-color: #007BFF;
+    border-color: #c40000; /* vermelho */
     outline: none;
-    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+    box-shadow: 0 0 5px rgba(196, 0, 0, 0.3);
 }
 
 form button {
     margin-top: 18px;
-    background-color: #007BFF;
+    background-color: #c40000; /* vermelho */
     color: white;
     border: none;
     font-size: 1rem;
@@ -176,11 +176,11 @@ form button {
 }
 
 form button:hover {
-    background-color: #0056b3;
+    background-color: #900000; /* vermelho escuro */
 }
 
 .anuncio {
-    background: #ffffff;
+    background: #fff; /* branco */
     padding: 18px;
     margin-bottom: 30px;
     border-radius: 10px;
@@ -227,8 +227,8 @@ form button:hover {
     display: inline-block;
     margin-top: 10px;
     padding: 8px 14px;
-    background-color: #e9ecef;
-    color: #007BFF;
+    background-color: #000; /* preto */
+    color: #fff; /* branco */
     border-radius: 6px;
     font-size: 0.9rem;
     font-weight: 600;
@@ -236,7 +236,7 @@ form button:hover {
 }
 
 .anuncio a:hover {
-    background-color: #d4e2f0;
+    background-color: #c40000; /* vermelho */
 }
 
 @media (max-width: 600px) {
